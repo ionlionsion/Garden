@@ -602,6 +602,7 @@ $Definition['The user table was not in the import file.'] = 'ユーザーテー�
 $Definition['Could not parse import file. The problem is near line %s.'] = 'インポートファイルを解析できません。%s 行付近で問題が発生しました。'; // applications/dashboard/models/class.importmodel.php
 $Definition['The import file does not contain any data.'] = 'インポートファイルにデータがありません。'; // applications/dashboard/models/class.importmodel.php
 $Definition['Email/Username'] = 'メールアドレス/ユーザー名'; // applications/dashboard/views/entry/auth/password.php
+$Definition['%s unavailable'] = 'その%sは利用できません。'; // applications/dashboard/controllers/class.usercontroller.php
 
 // Addons descriptions
 $Definition['An improvement upon existing private messaging tools, Conversations allows multiple users to take part in private conversations.'] = '既存のプライベートメッセージツールの改良版です。Conversations は複数のユーザー間で非公開の会話を楽しむことができます。'; // Conversations

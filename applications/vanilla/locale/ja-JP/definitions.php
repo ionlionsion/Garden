@@ -94,7 +94,7 @@ $Definition['All Discussions'] = 'すべてのディスカッション';
 $Definition['Allow other members to see your email?'] = '他のメンバーにメールアドレスを公開する';
 $Definition['Announce'] = 'お知らせ';
 $Definition['Applicants'] = '申請者リスト';
-$Definition['Apply'] = '申請'; // このコードはテーマの「適用」ボタン(ダッシュボード)と、審査制の場合のアカウント作成フォームの「申請」ボタンの両方に使われている。日本語の場合は本来単語が異なるが、使い分けができないため、管理者しか見ないダッシュボード用の「適用」を犠牲にして、「申請」を採用するものとする。
+$Definition['Apply'] = (C('Garden.Registration.Method') === 'Approval') ? '申請' : '適用'; // このコードはテーマの「適用」ボタン(ダッシュボード)と、審査制の場合のアカウント作成フォームの「申請」ボタンの両方に使われている。日本語の場合は本来単語が異なるが、使い分けができないため、管理者しか見ないダッシュボード用の「適用」を犠牲にして、「申請」を採用するものとする。
 $Definition['Apply for Membership'] = 'アカウントを作成する';
 $Definition['Are you sure you want to do that?'] = '本当に実行してよいですか？';
 // $Definition['at'] = 'アット';  // JavaScript でメールアドレス変換する都合上、翻訳しません。
