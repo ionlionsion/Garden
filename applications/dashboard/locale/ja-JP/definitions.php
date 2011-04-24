@@ -608,6 +608,7 @@ $Definition['%s unavailable'] = 'その%sは利用できません。'; // applic
 $Definition['An improvement upon existing private messaging tools, Conversations allows multiple users to take part in private conversations.'] = '既存のプライベートメッセージツールの改良版です。Conversations は複数のユーザー間で非公開の会話を楽しむことができます。'; // Conversations
 $Definition['Vanilla is the sweetest discussion forum on the web.'] = 'Vanilla は Web 上における最高のディスカッション フォーラムです。'; // Vanilla
 $Definition['Embed Vanilla allows you to embed your Vanilla forum within another application like WordPress, Drupal, or some custom website you\'ve created.'] = 'Embed Vanilla を使って、あなたの Vanilla フォーラムを他のアプリケーションに埋め込むことができます。WordPress や Drupal、そして あなたが作った専用のウェブサイトにも！'; // <Embed> Vanilla
+$Definition['This is a plugin to add a tab to the profile page, with various fields for a more detailed user profile.'] = 'プロフィール ページにタブを追加して、より詳細なプロフィール用のさまざまなフィールドを利用できます。'; // AboutMe 1.0
 $Definition['<a href="http://premiumsoftware.net/cleditor/" target="_blank">CLEditor</a> jQuery WYSIWYG plugin for Vanilla 2.'] = 'Vanilla 2 用の <a href="http://premiumsoftware.net/cleditor/" target="_blank">CLEditor</a> jQuery WYSIWYG プラグインです。'; // CLEditor jQuery WYSIWYG
 $Definition['The debugger plugin displays database queries, their benchmarks, and page processing benchmarks at the bottom of each screen of the application.'] = 'Debugger プラグインはデータベース クエリ、そのベンチマーク、ページ処理ベンチマークをアプリケーションの各画面下部に表示します。'; // Debugger
 $Definition['Replaces emoticons in forum comments with images.'] = 'フォーラムのコメント中の絵文字を画像に置き換えて表示します。'; // Emotify :)
@@ -624,38 +625,3 @@ $Definition['Collects undefined translation codes and save it for translating.']
 $Definition['This plugin integrates Twitter with Vanilla. <b>You must register your application with Twitter for this plugin to work.</b>'] = 'このプラグインは、Vanilla を Twitter に統合します。<b>このプラグインを使うには、Twitter にアプリケーションを登録する必要があります。</b>'; // Twitter 0.1a
 $Definition['Adds helpful graphs and information about activity on your forum over time (new users, discussions, comments, and pageviews).'] = 'あなたのフォーラムのアクティビティ (新規ユーザー、ディスカッション、コメント、ページビュー) に関する情報を時系列でグラフ化します。'; // Vanilla Statistics 2.0.17
 $Definition['This is a skeleton of a locale pack. If you want to create your own locale pack copy and rename this folder into your locales folder.'] = 'これはロケールパックのスケルトンです。独自のロケールパックを作成したい場合は、このフォルダをコピーしてロケールフォルダにリネームしてください。'; // Skeleton Locale 2.0.1
-
-// Plugins - <Embed> Vanilla 1.0.1
-$Definition['&lt;Embed&gt; Vanilla'] = '&lt;Embed&gt; Vanilla';
-$Definition['To embed your Vanilla community forum into a remote web application, use the forum embed code or one of the forum embed plugins below.'] = 'Vanillaフォーラムをリモート Web アプリケーションに埋め込むには、以下のフォーラム埋め込み用コードまたは いずれかのフォーラム埋め込み用プラグインを使ってください。';
-$Definition['WordPress Plugin'] = 'WordPress プラグイン';
-$Definition['Blogger Gadget'] = 'Blogger ガジェット';
-$Definition['Make sure to use a forum theme that meshes well with the look and feel of the remote site.'] = 'フォーラムのテーマがリモート サイトのデザインと調和しているかどうか、確認してください。';
-$Definition['Click here to apply it.'] = '適用するには、ここをクリックしてください。';
-$Definition['Click here to get it.'] = '入手するには、ここをクリックしてください。';
-$Definition['The "Remote Url" is the web address of the place where your embedded forum should be viewed from.'] = '"リモート URL" は、埋め込まれたフォーラムが表示される場所を指すウェブ アドレスです。';
-$Definition['Dashboard Embed'] = 'ダッシュボードの埋め込み';
-$Definition["Don't embed your forum admin dashboard (pop it out to full-screen)"] = 'フォーラムの管理用ダッシュボードを埋め込まない (全画面でポップアップさせます)';
-$Definition['Remote Url'] = 'リモート URL';
-$Definition['Force your forum to be viewed through the Remote Url'] = 'フォーラムをリモート URL 経由でのみ表示する';
-$Definition['Remote Url to Forum'] = 'フォーラムへのリモート URL';
-$Definition['Save Changes'] = '変更を保存';
-$Definition['You can embed your Vanilla Forum into Blogger with this Google Gadget. When in design mode in Blogger, click to "Add a Gadget", and when prompted to search for one, select "Add your own".'] = 'この Google ガジェットで、Vanilla フォーラムを Blogger に埋め込むことができます。Blogger のデザイン モードで "ガジェットを追加" をクリックし、検索用ポップアップ画面が表示されたら "独自に追加" をクリックしてください。';
-$Definition['Finally, enter this gadget url and click "Add by Url":'] = '後は、このガジェット URL を入力して "追加" をクリックするだけです:';
-
-// Plugins - ReplyTo 0.1.8
-$Definition['Reply to'] = '返信先';
-$Definition['Reply to @%s: '] = '@%s さんへの返信: '; // 将来のバージョンで、上の翻訳コードと入れ替えの予定
-$Definition['Reply'] = '返信';
-$Definition['In Reply To'] = '親投稿'; // 親投稿が前のページにある場合のみ表示
-$Definition['Reply To'] = 'Reply To';	// 設定画面の見出し
-$Definition['Options to apply to the ReplyTo plugin.'] = 'ReplyTo プラグインに適用されるオプション設定です。';
-$Definition['Option'] = 'オプション';
-$Definition['Mention'] = '@リプライ';
-$Definition['Mention of the user being replied to in new replies.'] = '新規返信時に、返信先ユーザーへの@リプライを自動挿入する。';
-
-// Theme - EmbedFriendly
-$Definition['This theme allows you to hide the side panel next to your forum and conversations. This is super handy if the website you are embedding in does not have a lot of width to squeeze into.'] = 'このテーマはフォーラムと会話からサイドパネルを隠すことができます。もしフォーラムを埋め込んだウェブサイトがあまり横幅を広くとれないデザインの場合は、これが役に立つことでしょう。';
-$Definition['Share'] = 'シェア';
-$Definition['Show the side panel'] = 'サイドパネルを表示する';
-$Definition['Hide the side panel'] = 'サイドパネルを隠す';
