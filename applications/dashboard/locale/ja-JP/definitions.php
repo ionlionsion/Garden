@@ -625,4 +625,5 @@ $Definition['Adds TinyMCE visual (WYSIWYG) editor to comment forms on discussion
 $Definition['Collects undefined translation codes and save it for translating.'] = '翻訳作業のために、未定義の翻訳コードを収集・保存します。'; // Translation collector 1.5.8
 $Definition['This plugin integrates Twitter with Vanilla. <b>You must register your application with Twitter for this plugin to work.</b>'] = 'このプラグインは、Vanilla を Twitter に統合します。<b>このプラグインを使うには、Twitter にアプリケーションを登録する必要があります。</b>'; // Twitter 0.1a
 $Definition['Adds helpful graphs and information about activity on your forum over time (new users, discussions, comments, and pageviews).'] = 'あなたのフォーラムのアクティビティ (新規ユーザー、ディスカッション、コメント、ページビュー) に関する情報を時系列でグラフ化します。'; // Vanilla Statistics 2.0.17
+$Definition['Allows users to vote on comments and discussions.'] = 'ディスカッションとコメントをユーザーが評価できます。'; // Voting 1.0.4.1b
 $Definition['This is a skeleton of a locale pack. If you want to create your own locale pack copy and rename this folder into your locales folder.'] = 'これはロケールパックのスケルトンです。独自のロケールパックを作成したい場合は、このフォルダをコピーしてロケールフォルダにリネームしてください。'; // Skeleton Locale 2.0.1
