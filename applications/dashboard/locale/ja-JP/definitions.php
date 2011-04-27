@@ -603,6 +603,8 @@ $Definition['Could not parse import file. The problem is near line %s.'] = 'イ�
 $Definition['The import file does not contain any data.'] = 'インポートファイルにデータがありません。'; // applications/dashboard/models/class.importmodel.php
 $Definition['Email/Username'] = 'メールアドレス/ユーザー名'; // applications/dashboard/views/entry/auth/password.php
 $Definition['%s unavailable'] = 'その%sは利用できません。'; // applications/dashboard/controllers/class.usercontroller.php
+$Definition['Page Not Found'] = 'ページが見つかりません'; // applications/dashboard/views/home/filenotfound.php
+$Definition['The page you were looking for could not be found.'] = 'お探しのページが見つかりませんでした。'; // applications/dashboard/views/home/filenotfound.php
 
 // Addons descriptions
 $Definition['An improvement upon existing private messaging tools, Conversations allows multiple users to take part in private conversations.'] = '既存のプライベートメッセージツールの改良版です。Conversations は複数のユーザー間で非公開の会話を楽しむことができます。'; // Conversations
