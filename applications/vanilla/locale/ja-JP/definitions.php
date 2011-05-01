@@ -351,7 +351,7 @@ $Definition['ValidateRequired'] = '%sは必須です。';
 $Definition['ValidateRequiredArray'] = '少なくとも一つ以上の%sを選択してください。';
 $Definition['ValidateTime'] = '%s は不正な時刻です。';
 $Definition['ValidateTimestamp'] = '%s は不正なタイムスタンプです。';
-$Definition['ValidateUsername'] = 'ユーザー名には 3～20 文字の英数字とアンダースコアのみ使用できます。';
+$Definition['ValidateUsername'] = 'ユーザー名には 1～20 文字の英数字と日本語を使用できます。<br />記号はナカグロ・長音・イコール（全角のみ）、アンダースコア・ハイフン（全半角）のみ使用できます。';
 $Definition['ValidateVersion'] = '%s フィールドは有効なバージョン番号ではありません。 phpのversion_compare()関数の例を見てください。';
 $Definition['Visits'] = 'ログイン回数';
 
@@ -380,7 +380,6 @@ $Definition['Change Password'] = 'パスワードを変更';
 $Definition['Your old password was incorrect.'] = '古いパスワードが間違っています。';
 $Definition['Your password has been changed.'] = 'パスワードが変更されました。';
 $Definition['Your changes have been saved successfully.'] = '変更が保存されました。';
-$Definition['Username can only contain letters, numbers, underscores, and must be between 3 and 20 characters long.'] = 'ユーザー名には 3～20 文字の英数字とアンダースコアのみ使用できます。';
 $Definition['View'] = '表示';
 $Definition['Clear'] = 'クリア';
 $Definition['Unsink'] = '上げ進行';
