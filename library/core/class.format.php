@@ -605,8 +605,11 @@ EOT;
          // Handle @mentions.
          if(C('Garden.Format.Mentions')) {
             $Mixed = preg_replace(
-               '/(^|[\s,\.])@(\w{1,50})\b/i', //{3,20}
-               '\1'.Anchor('@\2', '/profile/\\2'),
+               // mod for Japanese UserName
+               // '/(^|[\s,\.])@(\w{1,50})\b/i', //{3,20}
+               // '\1'.Anchor('@\2', '/profile/\\2'),
+               '/(^|[^一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－])@([一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－]{1,50})($|[^一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－])/u',
+               '\1'.Anchor('@\2', '/profile/\\2').'\3',
                $Mixed
             );
          }
