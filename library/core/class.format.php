@@ -624,7 +624,9 @@ EOT;
          // Handle #hashtag searches
 			if(C('Garden.Format.Hashtags')) {
 				$Mixed = preg_replace(
-					'/(^|[\s,\.])\#([\w\-]+)(?=[\s,\.!?]|$)/i',
+                    // mod for Japanese hashtag
+                    // '/(^|[\s,\.])\#([\w\-]+)(?=[\s,\.!?]|$)/i',
+                    '/(^|[^一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－])\#([一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－]+)(?=[^一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－]|$)/u',
 					'\1'.Anchor('#\2', '/search?Search=%23\2&amp;Mode=like').'\3',
 					$Mixed
 				);
