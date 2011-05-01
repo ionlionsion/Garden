@@ -367,7 +367,7 @@ $Definition['You already have an account here.'] = 'アカウント作成済み�
 $Definition['You are connected as %s through %s.'] = '%sから%sに接続しました。';
 $Definition['You do not have any conversations.'] = '会話はありません。';
 $Definition['You do not have any notifications yet.'] = '通知はありません。';
-$Definition['your'] = 'あなたの';
+$Definition['your'] = 'あなた';
 $Definition['Your application will be reviewed by an administrator. You will be notified by email if your application is approved.'] = '管理者が申請を審査します。承認されましたら、電子メールでお知らせします。';
 $Definition['Your registered username: <strong>%s</strong>'] = 'ユーザー名: <strong>%s</strong>';
 
