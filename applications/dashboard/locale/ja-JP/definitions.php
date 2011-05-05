@@ -80,8 +80,6 @@ $Definition['Basic'] = '基本';
 
 $Definition['Cancel'] = 'キャンセル';
 
-$Definition['Capture definitions throughout the site. You must visit the pages in the site in order for the definitions to be captured. The captured definitions will be put in the <code>captured.php</code> and <code>captured_admin.php</code>.'] = 'このサイトの定義文を収集します。あなたは定義文を収集したいページを順番に訪れる必要があります。収集された定義文は <code>captured.php</code> と <code>captured_admin.php</code> に出力されます。';
-$Definition['Capture locale pack changes.'] = 'ロケールデベロッパーと、指定されたロケールパックとの相違点を収集します。結果は <code>changes.php</code> ファイルに出力されます。';
 $Definition['Categories'] = 'カテゴリ';
 $Definition['Categories are used to help organize discussions.'] = 'カテゴリはディスカッションをまとめるのに役立ちます。ドラッグ &amp; ドロップで、並べ替えやネストもできます。';
 $Definition['Category'] = 'カテゴリ';
@@ -129,7 +127,6 @@ $Definition['Allow other members to see your email?'] = '他のメンバーに�
 $Definition['Change the way that new users register with the site.'] = '新規ユーザーがサイトに登録する方法を変更してください。';
 $Definition['Check all permissions that apply for each role'] = '以下のロールに適用する権限すべてにチェックを入れてください';
 $Definition['Check all roles that apply to this user:'] = 'このユーザーに適用するロールにすべてチェックを入れてください:';
-$Definition['Choose a locale pack'] = 'ロケールパックを選んでください';
 $Definition['Choose and configure your forum\'s authentication scheme.'] = 'フォーラムの認証スキームを選んで設定してください。';
 $Definition['Choose who can send out invitations to new members:'] = '誰が新しいメンバーに招待状を送信できるか、設定してください:';
 $Definition['Close'] = '終了';
@@ -144,8 +141,6 @@ $Definition['Confirm Email'] = 'メール確認待ち';
 $Definition['Consumer Key'] = 'Consumer Key';  // Twitter アプリ登録申請で使用するので、英語のままにしておく
 $Definition['Consumer Secret'] = 'Consumer Secret';  // Twitter アプリ登録申請で使用するので、英語のままにしておく
 $Definition['Conversation Messages'] = '会話のメッセージ数';
-$Definition['Copy'] = 'コピー';
-$Definition['Copy locale pack.'] = 'ロケールパックからロケールデベロッパーに定義文をコピーします。定義文は <code>copied.php</code> ファイルに出力されます。';
 $Definition['Current Authenticator'] = '現在の認証方式';
 $Definition['Current Theme'] = '現在のテーマ';
 $Definition['Customize your Public Profile'] = '公開プロフィールをカスタマイズ';
@@ -206,14 +201,12 @@ $Definition['Existing members send invitations to new members.'] = '既存のメ
 $Definition['Facebook Connect allows users to sign in using their Facebook account.'] = 'Facebook Connect を使うと、Facebook アカウントでログインできます。<b>このプラグインを使うには、Facebook にアプリケーションを登録する必要があります。</b>';
 $Definition['Facebook Settings'] = 'Facebook 設定';
 $Definition['First Visit'] = '訪問開始';
-$Definition['For more help on localization check out the page <a href="%s">here</a>.'] = 'ローカライゼーションについて、詳しくは<a href="%s">ここ</a>を参照してください。';
 $Definition['Forum Settings'] = 'フォーラム設定';
 
 $Definition['Garden.Email.SupportAddress'] = 'サポートメール';
 $Definition['Garden.Import.Description'] = 'このページを使用して、Vanilla のエクスポート機能を使用してエクスポートされた別のフォーラムからのデータをインポートしてください。 詳しくは<a href="%s">インポートについて (英語)</a> を参照してください。'; // 'Use this page to import data from another forum that was exported using Vanilla\'s exporter. For more information <a href="%s">see our importing documentation</a>.'
 $Definition['Garden.Import.InputInstructions'] = 'インポートされるデータの管理者ユーザーのメールアドレスとパスワードを入力してください。'; // 'Enter the email and password of the admin user from the data being imported.'
 $Definition['Garden.Import.Overwrite.Description'] = '警告: このフォーラムのすべてのデータが上書きされます。'; // 'Warning: All data in this forum will be overwritten.'
-$Definition['Generate'] = '生成';
 $Definition['Generate Password'] = 'パスワードを生成';
 $Definition['Go'] = '検索';
 $Definition['Google Sign In Settings'] = 'Google ログイン 設定';
@@ -237,10 +230,6 @@ $Definition['Key Value'] = 'キーの値';
 $Definition['Last Active'] = '最終訪問';
 $Definition['Last Visit'] = '最終訪問';
 $Definition['Locale'] = 'ja-JP';
-$Definition['Locale Developer'] = 'ロケール デベロッパー';
-$Definition['Locale Developer Settings %s.'] = 'ロケール デベロッパー設定 %s。';
-$Definition['Locale info file settings.'] = '<p>zipファイル作成時に含めるロケール情報を、下記で設定できます。 </p> <p><a href="%s">ここ</a>をクリックすると、ロケールパックの zip ファイルをダウンロードできます。</p>';
-$Definition['Locale Key (Folder)'] = 'ロケールキー (フォルダ名)';
 $Definition['Locale Name'] = 'ロケール名';
 $Definition['Locales'] = 'ロケール';
 $Definition['Locales are in your %s folder.'] = 'ロケールは、サイトを既定以外の言語で表示できるようにします。%s フォルダに追加されたロケールを、ここで有効化または無効化できます。';
@@ -317,7 +306,6 @@ $Definition['Recently Active Users'] = '最近 活動したユーザー';
 $Definition['Refresh Comments'] = 'コメントの自動更新';
 $Definition['Registration'] = '登録';
 $Definition['Remove'] = '削除';
-$Definition['Remove locale developer files.'] = 'ロケール デベロッパーのファイルを削除して、変更をリセットします。';
 $Definition['Requires: '] = '動作要件: ';
 $Definition['Reset Password'] = 'パスワードのリセット';
 $Definition['Reset password and send email notification to user'] = 'パスワードをリセットして、ユーザーにメールで通知';
@@ -362,7 +350,6 @@ $Definition['Themes'] = 'テーマ';
 $Definition['There are currently no applicants.'] = '申請者はいません。';
 $Definition['This plugin allows users to sign in with OpenID. <b>Make sure you click Settings after enabling this plugin to enable OpenID signin</b>.'] = 'このプラグインを使うと、OpenID でログインできます。<b>このプラグインを有効にした後、OpenID を有効化する設定を、必ずクリックしてください</b>。';
 $Definition['This plugin allows users to sign in with their Google accounts. <b>Make sure you click Settings after enabling this plugin to enable Google signin</b>.'] = 'このプラグインを使うと、Googleアカウントでログインできます。<b>OpenIDプラグインが有効になっている必要があります。また、このプラグインを有効にした後、Google アカウントでのログインを有効化する設定を必ずクリックしてください</b>。';
-$Definition['This plugin helps locale package development.'] = 'このプラグインは、ロケール パッケージの開発を助けます。The plugin keeps a working locale pack at <code>%s</code>.';
 $Definition['Tools'] = 'ツール';
 $Definition['Transport error: %s'] = 'リクエストを処理中に致命的なエラーが発生しました。<br />サーバーは次のように応答しています: %s';
 $Definition['Twitter Connect allows users to sign in using their Twitter account.'] = 'Twitter Connect を使うと、Twitter アカウントでログインできます。<b>このプラグインを使うには、Twitter にアプリケーションを登録する必要があります。</b>';
@@ -619,6 +606,7 @@ $Definition['This plugin integrates Vanilla with Facebook. <b>You must register 
 $Definition['This plugin allows users to report content that violates forum rules.'] = 'このプラグインは、フォーラムの規則に違反している投稿を、ユーザーが報告できるようにします。'; // Flagging 1.0.1
 $Definition['Implements Gravatar avatars for all users who have not uploaded their own custom profile picture & icon.'] = '独自のプロフィール画像とアイコンをアップロードしていないすべてのユーザーに、Gravatar アバターを代替表示します。'; // Gravatar 1.1
 $Definition['Adds a list of users taking part in the discussion to the side panel of the discussion page in Vanilla.'] = 'Vanilla のディスカッション ページのサイドパネルに、そのディスカッションの参加者リストを表示します。'; // In This Discussion 1
+$Definition['Contains useful functions for locale developers. When you enable this plugin go to its settings page to change your options. This plugin is maintained at http://github.com/vanillaforums/Addons'] = 'ロケール開発者向けのプラグインです。有効にした後は、設定ページへ移動してオプションを設定してください。このプラグインは http://github.com/vanillaforums/Addons でメンテナンスされています。'; // Locale Developer 1.1
 $Definition['Allows users to mark all discussions as viewed.'] = '全ディスカッションを既読扱いにできます。'; // Mark All Viewed 1.1
 $Definition['Analyzes each page request for js & css files, merging and minifying them where applicable.'] = 'ページごとに js と css ファイルのリクエストを分析して、送信時にそれらを結合・最適化します。'; // Minify 1.0.1b
 $Definition['Allows a reply to be made to a specific comment, supporting nested comments.'] = '特定のコメントに対して返信できるようになります。ツリー構造もサポートします。'; // ReplyTo 0.1.8
