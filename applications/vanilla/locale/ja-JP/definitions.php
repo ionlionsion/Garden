@@ -431,3 +431,4 @@ $Definition['The user and all related content has been deleted.'] = 'このユ�
 $Definition['Your changes were saved.'] = '変更を保存しました。'; // applications/conversations/modules/class.addpeoplemodule.php
 $Definition['Blank Discussion Topic'] = 'ディスカッション タイトル未設定';
 $Definition['message'] = 'メッセージ';
+$Definition['This user has not commented yet.'] = 'コメントはまだありません。'; // applications/vanilla/views/discussion/profile.php
