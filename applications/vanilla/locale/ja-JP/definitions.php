@@ -432,3 +432,4 @@ $Definition['Your changes were saved.'] = '変更を保存しました。'; // a
 $Definition['Blank Discussion Topic'] = 'ディスカッション タイトル未設定';
 $Definition['message'] = 'メッセージ';
 $Definition['This user has not commented yet.'] = 'コメントはまだありません。'; // applications/vanilla/views/discussion/profile.php
+$Definition['More Discussions'] = 'さらにディスカッションを表示'; // applications/vanilla/views/categories/discussions.php
