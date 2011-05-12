@@ -618,3 +618,10 @@ $Definition['This plugin integrates Twitter with Vanilla. <b>You must register y
 $Definition['Adds helpful graphs and information about activity on your forum over time (new users, discussions, comments, and pageviews).'] = 'あなたのフォーラムのアクティビティ (新規ユーザー、ディスカッション、コメント、ページビュー) に関する情報を時系列でグラフ化します。'; // Vanilla Statistics 2.0.17
 $Definition['Allows users to vote on comments and discussions.'] = 'ディスカッションとコメントをユーザーが評価できます。'; // Voting 1.0.4.1b
 $Definition['This is a skeleton of a locale pack. If you want to create your own locale pack copy and rename this folder into your locales folder.'] = 'これはロケールパックのスケルトンです。独自のロケールパックを作成したい場合は、このフォルダをコピーしてロケールフォルダにリネームしてください。'; // Skeleton Locale 2.0.1
+
+// Theme's descriptions
+$Definition['The default theme for Vanilla.'] = 'Vanilla の既定のテーマです。'; // default
+$Definition['A fluid theme that fits into any width. Use it for embedding Vanilla into other applications with the &lt;Embed&gt; Vanilla plugin.'] = 'どんな幅にもフィットする可変幅デザインのテーマです。&lt;Embed&gt; Vanilla プラグインと併用して、他のアプリケーションに Vanilla を埋め込むのに最適です。'; // EmbedFriendly 1.0
+$Definition['A refined design for mobile browsers'] = 'モバイル ブラウザ向けに特化したデザインです。'; // mobile 1.1
+$Definition['Based on timely by flowtown.'] = 'Flowtown による timely を元にしています。'; // timely 1.0
+$Definition['A Vanilla/WordPress bundle'] = 'WordPress TwentyTen テーマ風の Vanilla テーマです。'; // VanillaPress2010 1.0
