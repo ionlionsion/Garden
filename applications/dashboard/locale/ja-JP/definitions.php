@@ -592,6 +592,7 @@ $Definition['Email/Username'] = 'メールアドレス/ユーザー名'; // appl
 $Definition['%s unavailable'] = 'その%sは利用できません。'; // applications/dashboard/controllers/class.usercontroller.php
 $Definition['Page Not Found'] = 'ページが見つかりません'; // applications/dashboard/views/home/filenotfound.php
 $Definition['The page you were looking for could not be found.'] = 'お探しのページが見つかりませんでした。'; // applications/dashboard/views/home/filenotfound.php
+$Definition['This theme has additional options.'] = 'このテーマは %s ページでオプションを設定できます。'; // applications/dashboard/views/settings/themes.php
 
 // Addons descriptions
 $Definition['An improvement upon existing private messaging tools, Conversations allows multiple users to take part in private conversations.'] = '既存のプライベートメッセージツールの改良版です。Conversations は複数のユーザー間で非公開の会話を楽しむことができます。'; // Conversations
