@@ -117,7 +117,7 @@ $Definition['Confirm'] = '確認';
 $Definition['Confirm Password'] = 'パスワードを再入力';
 $Definition['Connect'] = '接続';
 $Definition['conversation'] = '会話';
-$Definition['Conversations'] = '会話数';
+$Definition['Conversations'] = '会話';
 $Definition['Create One.'] = '今すぐ作成';
 
 $Definition['Dashboard'] = 'ダッシュボード';
