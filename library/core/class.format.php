@@ -120,7 +120,7 @@ class Gdn_Format {
          $RegardingWall = T('wall');
 
       if ($Activity->Route == '') {
-      	 $ActivityRouteLink = '';
+         $ActivityRouteLink = '';
          if ($Activity->RouteCode)
             $Route = T($Activity->RouteCode);
          else
@@ -129,6 +129,7 @@ class Gdn_Format {
          $ActivityRouteLink = Url($Activity->Route);
          $Route = Anchor(T($Activity->RouteCode), $Activity->Route);
       }
+      //if ($Activity->ActivityID == 131) d($ActivityRouteLink, $Activity);
 
       // Translate the gender suffix.
       $GenderSuffixCode = "GenderSuffix.$GenderSuffixCode.$GenderSuffixGender";
@@ -151,7 +152,7 @@ class Gdn_Format {
 
       $FullHeadline = T("Activity.{$Activity->ActivityType}.FullHeadline", T($Activity->FullHeadline));
       $ProfileHeadline = T("Activity.{$Activity->ActivityType}.ProfileHeadline", T($Activity->ProfileHeadline));
-      $MessageFormat = ($ProfileUserID == $Activity->ActivityUserID || $ProfileUserID == '' ? $FullHeadline : $ProfileHeadline);
+      $MessageFormat = ($ProfileUserID == $Activity->ActivityUserID || $ProfileUserID == '' || !$ProfileHeadline ? $FullHeadline : $ProfileHeadline);
       
       return sprintf($MessageFormat, $ActivityName, $ActivityNameP, $RegardingName, $RegardingNameP, $RegardingWall, $Gender, $Gender2, $Route, $GenderSuffix, $RegardingWallLink, $ActivityRouteLink);
    }
@@ -272,7 +273,6 @@ class Gdn_Format {
                $Mixed2 = str_ireplace('[/font]', '</font>', $Mixed2);
 
                $Mixed2 = preg_replace('#\[/?left\]#si', '', $Mixed2);
-               $Mixed2 = Gdn_Format::Links($Mixed2);
                $Mixed2 = Gdn_Format::Mentions($Mixed2);
 					$Result = Gdn_Format::Html($Mixed2);
 					return $Result;
@@ -329,7 +329,8 @@ class Gdn_Format {
    /**
    * 
    */
-   protected static $Code = array('-','_','&lt;','&gt;','&#039;','&amp;','&quot;','À','Á','Â','Ã','Ä','&Auml;','Å','Ā','Ą','Ă','Æ','Ç','Ć','Č','Ĉ','Ċ','Ď','Đ','Ð','È','É','Ê','Ë','Ē','?','Ě','Ĕ','Ė','Ĝ','Ğ','Ġ','Ģ','Ĥ','Ħ','Ì','Í','Î','Ï','Ī','Ĩ','Ĭ','Į','İ','Ĳ','Ĵ','Ķ','Ł','Ľ','Ĺ','Ļ','Ŀ','Ñ','Ń','Ň','Ņ','Ŋ','Ò','Ó','Ô','Õ','Ö','&Ouml;','?','Ō','Ő','Ŏ','Œ','Ŕ','?','Ŗ','Ś','Š','Ş','Ŝ','?','Ť','Ţ','Ŧ','Ț','Ù','Ú','Û','Ü','Ū','&Uuml;','Ů','Ű','Ŭ','Ũ','Ų','Ŵ','Ý','Ŷ','Ÿ','Ź','Ž','Ż','Þ','Þ','à','á','â','ã','ä','&auml;','å','ā','ą','ă','æ','ç','ć','č','ĉ','ċ','ď','đ','ð','è','é','ê','ë','ē','ę','ě','ĕ','ė','ƒ','ĝ','ğ','ġ','ģ','ĥ','ħ','ì','í','î','ï','ī','ĩ','ĭ','į','ı','ĳ','ĵ','ķ','ĸ','ł','ľ','ĺ','ļ','ŀ','ñ','ń','ň','ņ','ŉ','ŋ','ò','ó','ô','õ','ö','&ouml;','ø','ō','ő','ŏ','œ','ŕ','ř','ŗ','š','ù','ú','û','ü','ū','&uuml;','ů','ű','ŭ','ũ','ų','ŵ','ý','ÿ','ŷ','ž','ż','ź','þ','ß','ſ','А','Б','В','Г','Д','Е','Ё','Ж','З','?','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я','а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я');
+   protected static $Code = array('-','_','&lt;','&gt;','&#039;','&amp;','&quot;','À','Á','Â','Ã','Ä','&Auml;','Å','Ā','Ą','Ă','Æ','Ç','Ć','Č','Ĉ','Ċ','Ď','Đ','Ð','È','É','Ê','Ë','Ē','Ě','Ĕ','Ė','Ĝ','Ğ','Ġ','Ģ','Ĥ','Ħ','Ì','Í','Î','Ï','Ī','Ĩ','Ĭ','Į','İ','Ĳ','Ĵ','Ķ','Ł','Ľ','Ĺ','Ļ','Ŀ','Ñ','Ń','Ň','Ņ','Ŋ','Ò','Ó','Ô','Õ','Ö','&Ouml;','Ō','Ő','Ŏ','Œ','Ŕ','Ŗ','Ś','Š','Ş','Ŝ','Ť','Ţ','Ŧ','Ț','Ù','Ú','Û','Ü','Ū','&Uuml;','Ů','Ű','Ŭ','Ũ','Ų','Ŵ','Ý','Ŷ','Ÿ','Ź','Ž','Ż','Þ','Þ','à','á','â','ã','ä','&auml;','å','ā','ą','ă','æ','ç','ć','č','ĉ','ċ','ď','đ','ð','è','é','ê','ë','ē','ę','ě','ĕ','ė','ƒ','ĝ','ğ','ġ','ģ','ĥ','ħ','ì','í','î','ï','ī','ĩ','ĭ','į','ı','ĳ','ĵ','ķ','ĸ','ł','ľ','ĺ','ļ','ŀ','ñ','ń','ň','ņ','ŉ','ŋ','ò','ó','ô','õ','ö','&ouml;','ø','ō','ő','ŏ','œ','ŕ','ř','ŗ','š','ù','ú','û','ü','ū','&uuml;','ů','ű','ŭ','ũ','ų','ŵ','ý','ÿ','ŷ','ž','ż','ź','þ','ß','ſ','А','Б','В','Г','Д','Е','Ё','Ж','З','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я','а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я');
+
    protected static $Translation = array(' ',' ','','','','','','A','A','A','A','Ae','A','A','A','A','A','Ae','C','C','C','C','C','D','D','D','E','E','E','E','E','E','E','E','E','G','G','G','G','H','H','I','I','I','I','I','I','I','I','I','IJ','J','K','K','K','K','K','K','N','N','N','N','N','O','O','O','O','Oe','Oe','O','O','O','O','OE','R','R','R','S','S','S','S','S','T','T','T','T','U','U','U','Ue','U','Ue','U','U','U','U','U','W','Y','Y','Y','Z','Z','Z','T','T','a','a','a','a','ae','ae','a','a','a','a','ae','c','c','c','c','c','d','d','d','e','e','e','e','e','e','e','e','e','f','g','g','g','g','h','h','i','i','i','i','i','i','i','i','i','ij','j','k','k','l','l','l','l','l','n','n','n','n','n','n','o','o','o','o','oe','oe','o','o','o','o','oe','r','r','r','s','u','u','u','ue','u','ue','u','u','u','u','u','w','y','y','y','z','z','z','t','ss','ss','A','B','V','G','D','E','YO','ZH','Z','I','Y','K','L','M','N','O','P','R','S','T','U','F','H','C','CH','SH','SCH','','Y','','E','YU','YA','a','b','v','g','d','e','yo','zh','z','i','y','k','l','m','n','o','p','r','s','t','u','f','h','c','ch','sh','sch','','y','','e','yu','ya');
 
    public static function Clean($Mixed) {
@@ -343,13 +344,17 @@ class Gdn_Format {
    /**
     * Formats a Mysql DateTime string in the specified format.
     *
+    * For instructions on how the format string works:
+    * @link http://us.php.net/manual/en/function.strftime.php
+    *
     * @param string $Timestamp A timestamp or string in Mysql DateTime format. ie. YYYY-MM-DD HH:MM:SS
     * @param string $Format The format string to use. Defaults to the application's default format.
-    * For instructions on how the format string works:
-    *  http://ca.php.net/manual/en/function.date.php
     * @return string
     */
    public static function Date($Timestamp = '', $Format = '') {
+      if ($Timestamp === NULL)
+         return T('Null Date', '-');
+
       // Was a mysqldatetime passed?
       if (!is_numeric($Timestamp))
          $Timestamp = self::ToTimestamp($Timestamp);
@@ -420,7 +425,7 @@ class Gdn_Format {
       else {
          $Mixed = htmlspecialchars($Mixed, ENT_QUOTES, C('Garden.Charset', ''));
          $Mixed = str_replace(array("&quot;","&amp;"), array('"','&'), $Mixed);
-         $nofollow = (self::$DisplayNoFollow) ? ' rel=\"nofollow\"' : '';
+         $nofollow = (self::$DisplayNoFollow) ? ' rel="nofollow"' : '';
          $Mixed = preg_replace(
             "/
             (?<!<a href=\")
@@ -468,6 +473,107 @@ class Gdn_Format {
             return htmlspecialchars($Mixed, ENT_QUOTES, C('Garden.Charset', ''));
       }
    }
+   
+   /**
+   * Show times relative to now
+   * 
+   * e.g. "4 hours ago"
+   * 
+   * Credit goes to: http://byteinn.com/res/426/Fuzzy_Time_function/
+   * 
+   * @param int optional $Timestamp, otherwise time() is used
+   * @return string
+   */
+   public static function FuzzyTime($Timestamp = NULL) {
+      if (is_null($Timestamp))
+         $Timestamp = time();
+      
+      $time = $Timestamp;
+      //echo $time." is: ";
+      if ( ( $time = strtotime( $time ) ) == false ) {
+         return T('an unknown time');
+      }
+      define( 'NOW',        time() );
+      define( 'ONE_MINUTE', 60 );
+      define( 'ONE_HOUR',   3600 );
+      define( 'ONE_DAY',    86400 );
+      define( 'ONE_WEEK',   ONE_DAY*7 );
+      define( 'ONE_MONTH',  ONE_WEEK*4 );
+      define( 'ONE_YEAR',   ONE_MONTH*12 );
+
+      // sod = start of day :)
+      $sod = mktime( 0, 0, 0, date( 'm', $time ), date( 'd', $time ), date( 'Y', $time ) );
+      $sod_now = mktime( 0, 0, 0, date( 'm', NOW ), date( 'd', NOW ), date( 'Y', NOW ) );
+
+      // used to convert numbers to strings
+      $convert = array( 1 => T('one'), 2 => T('two'), 3 => T('three'), 4 => T('four'), 5 => T('five'), 6 => T('six'), 7 => T('seven'), 8 => T('eight'), 9 => T('nine'), 10 => T('ten'), 11 => T('eleven') );
+
+      // today
+      if ( $sod_now == $sod ) {
+         if ( $time > NOW-(ONE_MINUTE*3) ) {
+            return T('just a moment ago');
+         } else if ( $time > NOW-(ONE_MINUTE*7) ) {
+            return T('a few minutes ago');
+         } else if ( $time > NOW-(ONE_HOUR) ) {
+            return T('less than an hour ago');
+         }
+         return sprintf(T('today at %s'), date( 'g:ia', $time ));
+      }
+
+      // yesterday
+      if ( ($sod_now-$sod) <= ONE_DAY ) {
+         if ( date( 'i', $time ) > (ONE_MINUTE+30) ) {
+            $time += ONE_HOUR/2;
+         }
+         return sprintf(T('yesterday around %s'), date( 'ga', $time ));
+      }
+
+      // within the last 5 days
+      if ( ($sod_now-$sod) <= (ONE_DAY*5) ) {
+         $str = date( 'l', $time );
+         $hour = date( 'G', $time );
+         if ( $hour < 12 ) {
+            $str .= T(' morning');
+         } else if ( $hour < 17 ) {
+            $str .= T(' afternoon');
+         } else if ( $hour < 20 ) {
+            $str .= T(' evening');
+         } else {
+            $str .= T(' night');
+         }
+         return $str;
+      }
+
+      // number of weeks (between 1 and 3)...
+      if ( ($sod_now-$sod) < (ONE_WEEK*3.5) ) {
+         if ( ($sod_now-$sod) < (ONE_WEEK*1.5) ) {
+            return T('about a week ago');
+         } else if ( ($sod_now-$sod) < (ONE_DAY*2.5) ) {
+            return T('about two weeks ago');
+         } else {
+            return T('about three weeks ago');
+         }
+      }
+
+      // number of months (between 1 and 11)...
+      if ( ($sod_now-$sod) < (ONE_MONTH*11.5) ) {
+         for ( $i = (ONE_WEEK*3.5), $m=0; $i < ONE_YEAR; $i += ONE_MONTH, $m++ ) {
+            if ( ($sod_now-$sod) <= $i ) {
+               return sprintf(T('about %s month%s ago'),$convert[$m],(($m>1)?'s':''));
+            }
+         }
+      }
+
+      // number of years...
+      for ( $i = (ONE_MONTH*11.5), $y=0; $i < (ONE_YEAR*10); $i += ONE_YEAR, $y++ ) {
+         if ( ($sod_now-$sod) <= $i ) {
+            return sprintf(T('about %s year%s ago'),$convert[$y],(($y>1)?'s':''));
+         }
+      }
+
+      // more than ten years...
+      return T('more than ten years ago');
+   }
 
    /**
     * Takes a mixed variable, filters unsafe html and returns it.
@@ -504,8 +610,10 @@ class Gdn_Format {
             $Mixed = Gdn_Format::Mentions($Mixed);
 
             // nl2br
-            if(C('Garden.Format.ReplaceNewlines', TRUE))
+            if(C('Garden.Format.ReplaceNewlines', TRUE)) {
                $Mixed = preg_replace("/(\015\012)|(\015)|(\012)/", "<br />", $Mixed);
+//               $Mixed = wpautop($Mixed);
+            }
 
             $Result = $Formatter->Format($Mixed);
 
@@ -513,13 +621,15 @@ class Gdn_Format {
 //               "<h3>Html</h3><pre>".nl2br(htmlspecialchars(str_replace("<br />", "\n", $Mixed)))."</pre>".
 //               "<h3>Formatted</h3><pre>".nl2br(htmlspecialchars(str_replace("<br />", "\n", $Result)))."</pre>";
          } else {
-            // The text does not contain text and does not have to be purified.
+            // The text does not contain html and does not have to be purified.
             // This is an optimization because purifying is very slow and memory intense.
             $Result = htmlspecialchars($Mixed);
             $Result = Gdn_Format::Mentions($Result);
             $Result = Gdn_Format::Links($Result);
-            if(C('Garden.Format.ReplaceNewlines', TRUE))
+            if(C('Garden.Format.ReplaceNewlines', TRUE)) {
                $Result = preg_replace("/(\015\012)|(\015)|(\012)/", "<br />", $Result);
+//               $Result = wpautop($Result);
+            }
          }
          
          return $Result;
@@ -535,13 +645,13 @@ class Gdn_Format {
       if (!is_string($Mixed))
          return self::To($Mixed, 'Links');
       else {
+         $Regex = "`((?:</?(?:a|img))|/\s*>)|((?:https?|ftp)://[\@a-z0-9\x21\x23-\x27\x2a-\x2e\x3a\x3b\/;\x3f-\x7a\x7e\x3d]+)`i";
+
+//         $Parts = preg_split($Regex, $Mixed, null, PREG_SPLIT_DELIM_CAPTURE);
+//         var_dump($Parts);
+
          $Mixed = preg_replace_callback(
-            "/
-            (?<!<a href=\")
-            (?<!\")(?<!\">)
-            ((?:https?|ftp):\/\/)
-            ([\@a-z0-9\x21\x23-\x27\x2a-\x2e\x3a\x3b\/;\x3f-\x7a\x7e\x3d]+)
-            /msxi",
+            $Regex,
          array('Gdn_Format', 'LinksCallback'),
          $Mixed);
 
@@ -549,30 +659,87 @@ class Gdn_Format {
       }
    }
    protected static function LinksCallback($Matches) {
-      $Pr = $Matches[1];
+      static $Width, $Height, $InAnchor = FALSE, $InImg = FALSE;
+      if (!isset($Width)) {
+         list($Width, $Height) = Gdn_Format::GetEmbedSize();
+      }
+
+      $Tag = strtolower($Matches[1]);
+      if ($Tag == '<a')
+         $InAnchor = TRUE;
+      elseif ($Tag == '</a')
+         $InAnchor = FALSE;
+      elseif ($Tag == '<img')
+         $InImg = TRUE;
+      elseif ($Tag == '</img')
+         $InImg = FALSE;
+      elseif ($Tag == '/>' && $InImg)
+         $InImg = FALSE;
+
+      if (!isset($Matches[2]) || $InAnchor || $InImg)
+         return $Matches[0];
+
       $Url = $Matches[2];
-      if (preg_match('/www.youtube.com\/watch\?v=([^&]+)/', $Url, $Matches) && C('Garden.Format.YouTube')) {
+      if (preg_match('`(?:https?|ftp)://www.youtube.com\/watch\?v=([^&]+)`', $Url, $Matches) && C('Garden.Format.YouTube')) {
          $ID = $Matches[1];
-         $Width = 400;
-         $Height = 225;
          $Result = <<<EOT
 <div class="Video"><object width="$Width" height="$Height"><param name="movie" value="http://www.youtube.com/v/$ID&amp;hl=en_US&amp;fs=1&amp;"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/$ID&amp;hl=en_US&amp;fs=1&amp;" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="$Width" height="$Height"></embed></object></div>
 EOT;
-      } elseif (preg_match('/vimeo.com\/(\d+)/', $Url, $Matches) && C('Garden.Format.Vimeo')) {
+      } elseif (preg_match('`(?:https?|ftp)://vimeo.com\/(\d+)`', $Url, $Matches) && C('Garden.Format.Vimeo')) {
          $ID = $Matches[1];
-         $Width = 400;
-         $Height = 225;
-
          $Result = <<<EOT
 <div class="Video"><object width="$Width" height="$Height"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=$ID&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=$ID&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="$Width" height="$Height"></embed></object></div>
 EOT;
       } else {
-		 $nofollow = (self::$DisplayNoFollow) ? ' rel="nofollow"' : '';
+         $nofollow = (self::$DisplayNoFollow) ? ' rel="nofollow"' : '';
+
+         // Strip punctuation off of the end of the url.
+         $Punc = '';
+         if (preg_match('`^(.+)([.?,;:])$`', $Url, $Matches)) {
+            $Url = $Matches[1];
+            $Punc = $Matches[2];
+         }
+
          $Result = <<<EOT
-<a href="$Pr$Url" target="_blank"$nofollow>$Pr$Url</a>
+<a href="$Url" target="_blank"$nofollow>$Url</a>$Punc
 EOT;
       }
       return $Result;
+   }
+   
+   /**
+    * Returns embedded video width and height, based on configuration.
+    * 
+    * @return array array(Width, Height)
+    */
+   protected static function GetEmbedSize() {
+      $Sizes = array(
+         'tiny' => array( 400, 225),
+         'small'=> array( 560, 340),
+         'normal'=>array( 640, 385),
+         'big'  => array( 853, 505),
+         'huge' => array(1280, 745));
+      $Size = Gdn::Config('Garden.Format.EmbedSize', 'normal');
+      
+      // We allow custom sizes <Width>x<Height>
+      if (!isset($Sizes[$Size])) {
+         if (strpos($Size, 'x')) {
+            list($Width, $Height) = explode('x', $Size);
+            $Width = intval($Width);
+            $Height = intval($Height);
+            
+            // Dimensions are too small, or 0
+            if ($Width<30 or $Height<30) {
+               $Size = 'normal';
+            }
+         } else {
+            $Size = 'normal';
+         }
+      }
+      if (isset($Sizes[$Size])) {
+         list($Width, $Height) = $Sizes[$Size];
+      }
+      return array($Width, $Height);
    }
 
    /**
@@ -605,11 +772,8 @@ EOT;
          // Handle @mentions.
          if(C('Garden.Format.Mentions')) {
             $Mixed = preg_replace(
-               // mod for Japanese UserName
-               // '/(^|[\s,\.])@(\w{1,50})\b/i', //{3,20}
-               // '\1'.Anchor('@\2', '/profile/\\2'),
-               '/(^|[^一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－])@([一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－]{1,50})($|[^一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－])/u',
-               '\1'.Anchor('@\2', '/profile/\\2').'\3',
+               '/(^|[\s,\.>])@(\w{1,50})\b/i', //{3,20}
+               '\1'.Anchor('@\2', '/profile/\\2'),
                $Mixed
             );
          }
@@ -624,9 +788,7 @@ EOT;
          // Handle #hashtag searches
 			if(C('Garden.Format.Hashtags')) {
 				$Mixed = preg_replace(
-                    // mod for Japanese hashtag
-                    // '/(^|[\s,\.])\#([\w\-]+)(?=[\s,\.!?]|$)/i',
-                    '/(^|[^一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－])\#([一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－]+)(?=[^一-龠ぁ-んァ-ヶ・ー＝\w\-０-９ａ-ｚＡ-Ｚ＿－]|$)/u',
+					'/(^|[\s,\.>])\#([\w\-]+)(?=[\s,\.!?]|$)/i',
 					'\1'.Anchor('#\2', '/search?Search=%23\2&amp;Mode=like').'\3',
 					$Mixed
 				);
@@ -702,7 +864,7 @@ EOT;
          return self::To($Mixed, 'Text');
       else {
          $Charset = C('Garden.Charset', 'UTF-8');
-         $Result = htmlspecialchars(strip_tags(html_entity_decode($Mixed, ENT_COMPAT, $Charset)), ENT_QUOTES, $Charset);
+         $Result = htmlspecialchars(strip_tags(html_entity_decode($Mixed, ENT_QUOTES, $Charset)), ENT_QUOTES, $Charset);
          if ($AddBreaks && C('Garden.Format.ReplaceNewlines', TRUE))
             $Result = nl2br(trim($Result));
          return $Result;
@@ -807,7 +969,7 @@ EOT;
       return $Result;
    }
 
-   protected static $_UrlTranslations = array('–' => '-', '—' => '-', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'Ae', 'Ä' => 'A', 'Å' => 'A', 'Ā' => 'A', 'Ą' => 'A', 'Ă' => 'A', 'Æ' => 'Ae', 'Ç' => 'C', 'Ć' => 'C', 'Č' => 'C', 'Ĉ' => 'C', 'Ċ' => 'C', 'Ď' => 'D', 'Đ' => 'D', 'Ð' => 'D', 'È' => 'E', 'É' => 'E', 'Ê' => 'E', 'Ë' => 'E', 'Ē' => 'E', '?' => 'E', 'Ě' => 'E', 'Ĕ' => 'E', 'Ė' => 'E', 'Ĝ' => 'G', 'Ğ' => 'G', 'Ġ' => 'G', 'Ģ' => 'G', 'Ĥ' => 'H', 'Ħ' => 'H', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ī' => 'I', 'Ĩ' => 'I', 'Ĭ' => 'I', 'Į' => 'I', 'İ' => 'I', 'Ĳ' => 'IJ', 'Ĵ' => 'J', 'Ķ' => 'K', 'Ł' => 'K', 'Ľ' => 'K', 'Ĺ' => 'K', 'Ļ' => 'K', 'Ŀ' => 'K', 'Ñ' => 'N', 'Ń' => 'N', 'Ň' => 'N', 'Ņ' => 'N', 'Ŋ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'Oe', 'Ö' => 'Oe', '?' => 'O', 'Ō' => 'O', 'Ő' => 'O', 'Ŏ' => 'O', 'Œ' => 'OE', 'Ŕ' => 'R', '?' => 'R', 'Ŗ' => 'R', 'Ś' => 'S', 'Š' => 'S', 'Ş' => 'S', 'Ŝ' => 'S', '?' => 'S', 'Ť' => 'T', 'Ţ' => 'T', 'Ŧ' => 'T', 'Ț' => 'T', 'Ù' => 'U', 'Ú' => 'U', 'Û' => 'U', 'Ü' => 'Ue', 'Ū' => 'U', 'Ü' => 'Ue', 'Ů' => 'U', 'Ű' => 'U', 'Ŭ' => 'U', 'Ũ' => 'U', 'Ų' => 'U', 'Ŵ' => 'W', 'Ý' => 'Y', 'Ŷ' => 'Y', 'Ÿ' => 'Y', 'Ź' => 'Z', 'Ž' => 'Z', 'Ż' => 'Z', 'Þ' => 'T', 'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'ae', 'ä' => 'ae', 'å' => 'a', 'ā' => 'a', 'ą' => 'a', 'ă' => 'a', 'æ' => 'ae', 'ç' => 'c', 'ć' => 'c', 'č' => 'c', 'ĉ' => 'c', 'ċ' => 'c', 'ď' => 'd', 'đ' => 'd', 'ð' => 'd', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ē' => 'e', 'ę' => 'e', 'ě' => 'e', 'ĕ' => 'e', 'ė' => 'e', 'ƒ' => 'f', 'ĝ' => 'g', 'ğ' => 'g', 'ġ' => 'g', 'ģ' => 'g', 'ĥ' => 'h', 'ħ' => 'h', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 'ī' => 'i', 'ĩ' => 'i', 'ĭ' => 'i', 'į' => 'i', 'ı' => 'i', 'ĳ' => 'ij', 'ĵ' => 'j', 'ķ' => 'k', 'ĸ' => 'k', 'ł' => 'l', 'ľ' => 'l', 'ĺ' => 'l', 'ļ' => 'l', 'ŀ' => 'l', 'ñ' => 'n', 'ń' => 'n', 'ň' => 'n', 'ņ' => 'n', 'ŉ' => 'n', 'ŋ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'oe', 'ö' => 'oe', 'ø' => 'o', 'ō' => 'o', 'ő' => 'o', 'ŏ' => 'o', 'œ' => 'oe', 'ŕ' => 'r', 'ř' => 'r', 'ŗ' => 'r', 'š' => 's', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ü' => 'ue', 'ū' => 'u', 'ü' => 'ue', 'ů' => 'u', 'ű' => 'u', 'ŭ' => 'u', 'ũ' => 'u', 'ų' => 'u', 'ŵ' => 'w', 'ý' => 'y', 'ÿ' => 'y', 'ŷ' => 'y', 'ž' => 'z', 'ż' => 'z', 'ź' => 'z', 'þ' => 't', 'ß' => 'ss', 'ſ' => 'ss', 'А' => 'A', 'Б' => 'B', 'В' => 'V', 'Г' => 'G', 'Д' => 'D', 'Е' => 'E', 'Ё' => 'YO', 'Ж' => 'ZH', 'З' => 'Z', '?' => 'I', 'Й' => 'Y', 'К' => 'K', 'Л' => 'L', 'М' => 'M', 'Н' => 'N', 'О' => 'O', 'П' => 'P', 'Р' => 'R', 'С' => 'S', 'ș' => 's', '?' => 'S', 'ț' => 't', 'Ț' => 'T',  'Т' => 'T', 'У' => 'U', 'Ф' => 'F', 'Х' => 'H', 'Ц' => 'C', 'Ч' => 'CH', 'Ш' => 'SH', 'Щ' => 'SCH', 'Ъ' => '', 'Ы' => 'Y', 'Ь' => '', 'Э' => 'E', 'Ю' => 'YU', 'Я' => 'YA', 'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd', 'е' => 'e', 'ё' => 'yo', 'ж' => 'zh', 'з' => 'z', 'и' => 'i', 'й' => 'y', 'к' => 'k', 'л' => 'l', 'м' => 'm', 'н' => 'n', 'о' => 'o', 'п' => 'p', 'р' => 'r', 'с' => 's', 'т' => 't', 'у' => 'u', 'ф' => 'f', 'х' => 'h', 'ц' => 'c', 'ч' => 'ch', 'ш' => 'sh', 'щ' => 'sch', 'ъ' => '', 'ы' => 'y', 'ь' => '', 'э' => 'e', 'ю' => 'yu', 'я' => 'ya');
+   protected static $_UrlTranslations = array('–' => '-', '—' => '-', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'Ae', 'Ä' => 'A', 'Å' => 'A', 'Ā' => 'A', 'Ą' => 'A', 'Ă' => 'A', 'Æ' => 'Ae', 'Ç' => 'C', 'Ć' => 'C', 'Č' => 'C', 'Ĉ' => 'C', 'Ċ' => 'C', 'Ď' => 'D', 'Đ' => 'D', 'Ð' => 'D', 'È' => 'E', 'É' => 'E', 'Ê' => 'E', 'Ë' => 'E', 'Ē' => 'E', 'Ě' => 'E', 'Ĕ' => 'E', 'Ė' => 'E', 'Ĝ' => 'G', 'Ğ' => 'G', 'Ġ' => 'G', 'Ģ' => 'G', 'Ĥ' => 'H', 'Ħ' => 'H', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ī' => 'I', 'Ĩ' => 'I', 'Ĭ' => 'I', 'Į' => 'I', 'İ' => 'I', 'Ĳ' => 'IJ', 'Ĵ' => 'J', 'Ķ' => 'K', 'Ł' => 'K', 'Ľ' => 'K', 'Ĺ' => 'K', 'Ļ' => 'K', 'Ŀ' => 'K', 'Ñ' => 'N', 'Ń' => 'N', 'Ň' => 'N', 'Ņ' => 'N', 'Ŋ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'Oe', 'Ö' => 'Oe', 'Ō' => 'O', 'Ő' => 'O', 'Ŏ' => 'O', 'Œ' => 'OE', 'Ŕ' => 'R', 'Ŗ' => 'R', 'Ś' => 'S', 'Š' => 'S', 'Ş' => 'S', 'Ŝ' => 'S', 'Ť' => 'T', 'Ţ' => 'T', 'Ŧ' => 'T', 'Ț' => 'T', 'Ù' => 'U', 'Ú' => 'U', 'Û' => 'U', 'Ü' => 'Ue', 'Ū' => 'U', 'Ü' => 'Ue', 'Ů' => 'U', 'Ű' => 'U', 'Ŭ' => 'U', 'Ũ' => 'U', 'Ų' => 'U', 'Ŵ' => 'W', 'Ý' => 'Y', 'Ŷ' => 'Y', 'Ÿ' => 'Y', 'Ź' => 'Z', 'Ž' => 'Z', 'Ż' => 'Z', 'Þ' => 'T', 'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'ae', 'ä' => 'ae', 'å' => 'a', 'ā' => 'a', 'ą' => 'a', 'ă' => 'a', 'æ' => 'ae', 'ç' => 'c', 'ć' => 'c', 'č' => 'c', 'ĉ' => 'c', 'ċ' => 'c', 'ď' => 'd', 'đ' => 'd', 'ð' => 'd', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ē' => 'e', 'ę' => 'e', 'ě' => 'e', 'ĕ' => 'e', 'ė' => 'e', 'ƒ' => 'f', 'ĝ' => 'g', 'ğ' => 'g', 'ġ' => 'g', 'ģ' => 'g', 'ĥ' => 'h', 'ħ' => 'h', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 'ī' => 'i', 'ĩ' => 'i', 'ĭ' => 'i', 'į' => 'i', 'ı' => 'i', 'ĳ' => 'ij', 'ĵ' => 'j', 'ķ' => 'k', 'ĸ' => 'k', 'ł' => 'l', 'ľ' => 'l', 'ĺ' => 'l', 'ļ' => 'l', 'ŀ' => 'l', 'ñ' => 'n', 'ń' => 'n', 'ň' => 'n', 'ņ' => 'n', 'ŉ' => 'n', 'ŋ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'oe', 'ö' => 'oe', 'ø' => 'o', 'ō' => 'o', 'ő' => 'o', 'ŏ' => 'o', 'œ' => 'oe', 'ŕ' => 'r', 'ř' => 'r', 'ŗ' => 'r', 'š' => 's', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ü' => 'ue', 'ū' => 'u', 'ü' => 'ue', 'ů' => 'u', 'ű' => 'u', 'ŭ' => 'u', 'ũ' => 'u', 'ų' => 'u', 'ŵ' => 'w', 'ý' => 'y', 'ÿ' => 'y', 'ŷ' => 'y', 'ž' => 'z', 'ż' => 'z', 'ź' => 'z', 'þ' => 't', 'ß' => 'ss', 'ſ' => 'ss', 'А' => 'A', 'Б' => 'B', 'В' => 'V', 'Г' => 'G', 'Д' => 'D', 'Е' => 'E', 'Ё' => 'YO', 'Ж' => 'ZH', 'З' => 'Z', 'Й' => 'Y', 'К' => 'K', 'Л' => 'L', 'М' => 'M', 'Н' => 'N', 'О' => 'O', 'П' => 'P', 'Р' => 'R', 'С' => 'S', 'ș' => 's', 'ț' => 't', 'Ț' => 'T',  'Т' => 'T', 'У' => 'U', 'Ф' => 'F', 'Х' => 'H', 'Ц' => 'C', 'Ч' => 'CH', 'Ш' => 'SH', 'Щ' => 'SCH', 'Ъ' => '', 'Ы' => 'Y', 'Ь' => '', 'Э' => 'E', 'Ю' => 'YU', 'Я' => 'YA', 'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd', 'е' => 'e', 'ё' => 'yo', 'ж' => 'zh', 'з' => 'z', 'и' => 'i', 'й' => 'y', 'к' => 'k', 'л' => 'l', 'м' => 'm', 'н' => 'n', 'о' => 'o', 'п' => 'p', 'р' => 'r', 'с' => 's', 'т' => 't', 'у' => 'u', 'ф' => 'f', 'х' => 'h', 'ц' => 'c', 'ч' => 'ch', 'ш' => 'sh', 'щ' => 'sch', 'ъ' => '', 'ы' => 'y', 'ь' => '', 'э' => 'e', 'ю' => 'yu', 'я' => 'ya');
 
    /**
     * Replaces all non-url-friendly characters with dashes.

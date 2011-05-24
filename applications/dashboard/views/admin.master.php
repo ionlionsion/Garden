@@ -1,6 +1,6 @@
 <?php echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo C('Garden.Locale'); ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-ca">
 <head>
    <?php $this->RenderAsset('Head'); ?>
 </head>
@@ -11,7 +11,6 @@
          <div class="User">
             <?php
 			      $Session = Gdn::Session();
-					$Authenticator = Gdn::Authenticator();
 					if ($Session->IsValid()) {
 						$this->FireEvent('BeforeUserOptionsMenu');
 						
@@ -21,7 +20,7 @@
 							$Name .= Wrap($CountNotifications);
 							
 						echo Anchor($Name, '/profile/'.$Session->User->UserID.'/'.$Session->User->Name, 'Profile');
-						echo Anchor(T('Sign Out'), str_replace('{Session_TransientKey}', $Session->TransientKey(), $Authenticator->SignOutUrl()), 'Leave');
+						echo Anchor(T('Sign Out'), SignOutUrl(), 'Leave');
 					}
 				?>
          </div>

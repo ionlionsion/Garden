@@ -380,13 +380,14 @@ class TwitterPlugin extends Gdn_Plugin {
    }
 
    public function SettingsController_Twitter_Create($Sender, $Args) {
+   	  $Sender->Permission('Garden.Settings.Manage');
       if ($Sender->Form->IsPostBack()) {
          $Settings = array(
              'Plugins.Twitter.ConsumerKey' => $Sender->Form->GetFormValue('ConsumerKey'),
              'Plugins.Twitter.Secret' => $Sender->Form->GetFormValue('Secret'));
 
          SaveToConfig($Settings);
-         $Sender->StatusMessage = T("Your settings have been saved.");
+         $Sender->InformMessage(T("Your settings have been saved."));
 
       } else {
          $Sender->Form->SetFormValue('ConsumerKey', C('Plugins.Twitter.ConsumerKey'));

@@ -110,13 +110,14 @@ class FacebookPlugin extends Gdn_Plugin {
    }
 	
    public function SettingsController_Facebook_Create($Sender, $Args) {
+      $Sender->Permission('Garden.Settings.Manage');
       if ($Sender->Form->IsPostBack()) {
          $Settings = array(
              'Plugins.Facebook.ApplicationID' => $Sender->Form->GetFormValue('ApplicationID'),
              'Plugins.Facebook.Secret' => $Sender->Form->GetFormValue('Secret'));
 
          SaveToConfig($Settings);
-         $Sender->StatusMessage = T("Your settings have been saved.");
+         $Sender->InformMessage(T("Your settings have been saved."));
 
       } else {
          $Sender->Form->SetFormValue('ApplicationID', C('Plugins.Facebook.ApplicationID'));

@@ -1,6 +1,6 @@
 <?php echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo C('Garden.Locale'); ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-ca">
 <head>
    <?php $this->RenderAsset('Head'); ?>
 </head>
@@ -15,25 +15,24 @@
 						$this->Menu->AddLink('Dashboard', T('Dashboard'), '/dashboard/settings', array('Garden.Settings.Manage'));
 						// $this->Menu->AddLink('Dashboard', T('Users'), '/user/browse', array('Garden.Users.Add', 'Garden.Users.Edit', 'Garden.Users.Delete'));
 						$this->Menu->AddLink('Activity', T('Activity'), '/activity');
-			         $Authenticator = Gdn::Authenticator();
 						if ($Session->IsValid()) {
 							$Name = $Session->User->Name;
 							$CountNotifications = $Session->User->CountNotifications;
 							if (is_numeric($CountNotifications) && $CountNotifications > 0)
-								$Name .= ' <span>'.$CountNotifications.'</span>';
+								$Name .= ' <span class="Alert">'.$CountNotifications.'</span>';
 
                      if (urlencode($Session->User->Name) == $Session->User->Name)
                         $ProfileSlug = $Session->User->Name;
                      else
                         $ProfileSlug = $Session->UserID.'/'.urlencode($Session->User->Name);
 							$this->Menu->AddLink('User', $Name, '/profile/'.$ProfileSlug, array('Garden.SignIn.Allow'), array('class' => 'UserNotifications'));
-							$this->Menu->AddLink('SignOut', T('Sign Out'), Gdn::Authenticator()->SignOutUrl(), FALSE, array('class' => 'NonTab SignOut'));
+							$this->Menu->AddLink('SignOut', T('Sign Out'), SignOutUrl(), FALSE, array('class' => 'NonTab SignOut'));
 						} else {
 							$Attribs = array();
 							if (SignInPopup() && strpos(Gdn::Request()->Url(), 'entry') === FALSE)
 								$Attribs['class'] = 'SignInPopup';
 								
-							$this->Menu->AddLink('Entry', T('Sign In'), Gdn::Authenticator()->SignInUrl(), FALSE, array('class' => 'NonTab'), $Attribs);
+							$this->Menu->AddLink('Entry', T('Sign In'), SignInUrl(), FALSE, array('class' => 'NonTab'), $Attribs);
 						}
 						echo $this->Menu->ToString();
 					}
