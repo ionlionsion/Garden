@@ -598,6 +598,7 @@ $Definition['The route was saved successfully.'] = 'ルートが保存されま�
 $Definition['The homepage was saved successfully.'] = 'ホーム画面が保存されました。'; // applications/dashboard/controllers/class.settingscontroller.php
 $Definition['Forum'] = 'フォーラム'; // ダッシュボードのサイドメニュー名
 $Definition['Theme Options'] = 'テーマ オプション'; // ダッシュボードのサイドメニュー名
+$Definition['GuestModule.Message'] = '初めてですか？　参加するには、どちらかのボタンをクリックしてください！'; // applications/dashboard/modules/class.guestmodule.php
 
 // Addons descriptions
 $Definition['An improvement upon existing private messaging tools, Conversations allows multiple users to take part in private conversations.'] = '既存のプライベートメッセージツールの改良版です。Conversations は複数のユーザー間で非公開の会話を楽しむことができます。'; // Conversations
